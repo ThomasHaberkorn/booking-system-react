@@ -1,0 +1,44 @@
+@import "./../../index.scss";
+
+.mainContainer {
+    width: 100vw;
+    @include dFlex();
+    .innerContainer {
+        width: 90%;
+        max-width: 1200px;
+        height: 100px;
+        @include dFlex($jc: space-between);
+        color: $white;
+        .nameContainer {
+            img {
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+            }
+        }
+        .navigation {
+            margin-right: 5px;
+            @include dFlex();
+            gap: 20px;
+            .navItem {
+                color: $white;
+                text-decoration: none;
+                cursor: pointer;
+
+                &:link,
+                &:visited {
+                    color: $white; /* Standardfarbe */
+                }
+                &:hover {
+                    color: $lblue; /* Hover-Farbe */
+                }
+                &:active {
+                    color: $linkblue; /* Manuelle Aktiv-Farbe */
+                }
+                &.active {
+                    color: $linkblue; /* Farbe für den aktiven Zustand */
+                }
+            }
+        }
+    }
+}

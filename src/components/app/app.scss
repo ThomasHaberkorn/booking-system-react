@@ -1,0 +1,9 @@
+@import "./../../index.scss";
+
+.mainContent {
+    width: 100%;
+    height: calc(100vh - 100px);
+    position: relative;
+    overflow: hidden;
+    @include dFlex();
+}

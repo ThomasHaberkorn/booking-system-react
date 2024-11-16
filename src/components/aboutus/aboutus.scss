@@ -1,0 +1,43 @@
+@import "./../../index.scss";
+
+.innerContent {
+    position: absolute;
+    top: 10px;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 670px;
+    height: calc(100% - 30px);
+    background-image: url("./../../assets/img/bgr-img.webp");
+    object-fit: cover;
+
+    border-radius: 30px;
+    @include dFlex($ai: flex-start);
+    gap: 2.5%;
+    .column {
+        width: 22%;
+        margin-top: 2%;
+        .imgContainer {
+            width: 100%;
+            height: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 30px;
+            }
+        }
+        .textContainer {
+            text-align: justify;
+            .title {
+                width: 100%;
+                text-align: center;
+                h4 {
+                    font-size: 1.4rem;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    color: $mlblue;
+                }
+            }
+        }
+    }
+}

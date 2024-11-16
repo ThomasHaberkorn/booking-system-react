@@ -1,0 +1,43 @@
+$bg_white: #f6f6f6;
+$c_white: #fdfce9;
+$white: #ffffff;
+$dblue: #2a3647;
+$mblue: #3d5a85;
+$mlblue: #5076af;
+$lblue: #29abe2;
+$linkblue: #007cee;
+$red: red;
+$urgend: #ff3d00;
+$medium: #ffa800;
+$low: #7ae229;
+$userStory: #0038ff;
+
+@mixin dFlex($jc: center, $ai: center) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin flexDir($dir, $jc: center, $ai: center) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $mblue;
+    width: 100vw;
+    height: 100vh;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
