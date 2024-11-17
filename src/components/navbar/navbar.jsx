@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './navbar.scss';
 import logo from './../../assets/img/logo.webp';
-import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 

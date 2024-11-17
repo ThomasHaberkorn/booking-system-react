@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import "./aboutus.scss";
 import alex from './../../assets/img/alexander.jpeg';
 import julia from './../../assets/img/julia.jpeg';
@@ -7,7 +7,7 @@ import clara from './../../assets/img/clara.jpeg';
 
 
 const AboutUs = () => (
-        <div className="innerContent">
+        <div className="aboutContent">
             <div className="column">
                 <div className="imgContainer"><img src={alex} alt="" /></div>
                 <div className="textContainer">

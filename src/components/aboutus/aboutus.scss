@@ -1,16 +1,8 @@
 @import "./../../index.scss";
+@import "./../home/home.scss";
 
-.innerContent {
-    position: absolute;
-    top: 10px;
-    width: 90%;
-    max-width: 1200px;
-    max-height: 670px;
-    height: calc(100% - 30px);
-    background-image: url("./../../assets/img/bgr-img.webp");
-    object-fit: cover;
-
-    border-radius: 30px;
+.aboutContent {
+    @include inner();
     @include dFlex($ai: flex-start);
     gap: 2.5%;
     .column {

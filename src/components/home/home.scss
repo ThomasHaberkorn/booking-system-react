@@ -35,18 +35,25 @@
     }
 }
 
-.innerContent {
+@mixin inner() {
     position: absolute;
+    top: 10px;
     width: 90%;
-    height: calc(100% - 30px);
+    max-width: 1200px;
+    max-height: 750px;
+    height: calc(100% - 45px);
     background-image: url("./../../assets/img/bgr-img.webp");
     object-fit: cover;
     border-radius: 30px;
+}
+
+.innerContent {
+    @include inner();
     @include dFlex();
     .textContent {
         width: 50%;
         height: 100%;
-        @include flexDir(column, $jc: flex-start);
+        @include flexDir(column, $jc: center);
         .innerTextContent {
             width: 70%;
             h1 {
@@ -108,47 +115,5 @@
             aspect-ratio: 1/1;
             border-radius: 30px;
         }
-    }
-}
-.instructions {
-    position: fixed; /* Bleibt unabhängig von der Eltern-Komponente */
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -7.5%); /* Zentriert das Div */
-    width: 450px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    opacity: 0; /* Unsichtbar, bis animiert */
-    z-index: 100; /* Hebt es über andere Elemente */
-    text-align: justify;
-
-    .closeButton {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
-    }
-    .infoBN {
-        width: 250px;
-        height: 50px;
-        border: 2px solid $mblue;
-        margin-left: auto;
-        margin-right: auto;
-        @include flexDir(column, $ai: center);
-        p {
-            margin-top: 4px;
-            margin-bottom: 4px;
-        }
-    }
-    h3 {
-        font-size: 1rem;
-    }
-
-    p {
-        font-size: 0.8rem;
     }
 }
