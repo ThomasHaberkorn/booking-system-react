@@ -38,6 +38,14 @@
                 &.active {
                     color: $linkblue; /* Farbe für den aktiven Zustand */
                 }
+                &.login {
+                    color: $white; // Blau für Login
+                }
+
+                &.logout {
+                    color: red; // Rot für Logout
+                    font-weight: bold; // Optional, um es hervorzuheben
+                }
             }
         }
     }
