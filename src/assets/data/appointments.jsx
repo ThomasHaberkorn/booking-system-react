@@ -1,43 +1,115 @@
 const appointments = [
-    { day: "Monday", time: "08:00", therapists: ["Max Mustermann", null, null, null] },
-    { day: "Monday", time: "09:00", therapists: [null, "Anna Schmidt", null, null] },
-    { day: "Monday", time: "10:00", therapists: [null, null, "John Doe", null] },
-    { day: "Monday", time: "11:00", therapists: [null, null, null, "Laura Klein"] },
-    { day: "Monday", time: "12:00", therapists: ["Max Mustermann", "Anna Schmidt", null, null] },
-    { day: "Tuesday", time: "08:00", therapists: [null, null, "John Doe", null] },
-    { day: "Tuesday", time: "09:00", therapists: ["Laura Klein", null, null, null] },
-    { day: "Tuesday", time: "10:00", therapists: [null, "Anna Schmidt", "John Doe", null] },
-    { day: "Tuesday", time: "11:00", therapists: [null, null, null, "Laura Klein"] },
-    { day: "Tuesday", time: "12:00", therapists: ["Max Mustermann", null, "John Doe", null] },
-    { day: "Wednesday", time: "08:00", therapists: ["Anna Schmidt", "Laura Klein", null, null] },
-    { day: "Wednesday", time: "09:00", therapists: [null, "Anna Schmidt", null, "Laura Klein"] },
-    { day: "Wednesday", time: "10:00", therapists: ["John Doe", null, null, "Max Mustermann"] },
-    { day: "Wednesday", time: "11:00", therapists: [null, null, "Anna Schmidt", "Laura Klein"] },
-    { day: "Wednesday", time: "12:00", therapists: ["Max Mustermann", null, null, null] },
-    { day: "Thursday", time: "08:00", therapists: [null, "Anna Schmidt", null, "Laura Klein"] },
-    { day: "Thursday", time: "09:00", therapists: ["Max Mustermann", null, "John Doe", null] },
-    { day: "Thursday", time: "10:00", therapists: [null, null, "Anna Schmidt", "Laura Klein"] },
-    { day: "Thursday", time: "11:00", therapists: ["Laura Klein", "Max Mustermann", null, null] },
-    { day: "Thursday", time: "12:00", therapists: [null, null, null, "Anna Schmidt"] },
-    { day: "Friday", time: "08:00", therapists: ["Max Mustermann", "Anna Schmidt", null, null] },
-    { day: "Friday", time: "09:00", therapists: ["John Doe", null, "Laura Klein", null] },
-    { day: "Friday", time: "10:00", therapists: [null, null, null, "Max Mustermann"] },
-    { day: "Friday", time: "11:00", therapists: [null, "Anna Schmidt", "John Doe", "Laura Klein"] },
-    { day: "Friday", time: "12:00", therapists: ["Laura Klein", null, null, null] },
-    { day: "Monday", time: "13:00", therapists: [null, "Anna Schmidt", null, "John Doe"] },
-    { day: "Tuesday", time: "13:00", therapists: ["Max Mustermann", null, "Laura Klein", null] },
-    { day: "Wednesday", time: "13:00", therapists: ["Anna Schmidt", null, null, null] },
-    { day: "Thursday", time: "13:00", therapists: [null, null, "John Doe", "Laura Klein"] },
-    { day: "Friday", time: "13:00", therapists: ["Max Mustermann", "Anna Schmidt", null, null] },
-    { day: "Monday", time: "14:00", therapists: [null, null, null, "Laura Klein"] },
-    { day: "Tuesday", time: "14:00", therapists: ["John Doe", null, "Anna Schmidt", null] },
-    { day: "Wednesday", time: "14:00", therapists: ["Max Mustermann", null, null, "Laura Klein"] },
-    { day: "Thursday", time: "14:00", therapists: [null, "John Doe", null, null] },
-    { day: "Friday", time: "14:00", therapists: ["Anna Schmidt", null, "Max Mustermann", null] },
-    { day: "Monday", time: "15:00", therapists: ["Laura Klein", "John Doe", null, "Anna Schmidt"] },
-    { day: "Tuesday", time: "15:00", therapists: [null, null, null, "Max Mustermann"] },
-    { day: "Wednesday", time: "15:00", therapists: ["Anna Schmidt", null, "Laura Klein", null] },
-    { day: "Thursday", time: "15:00", therapists: ["Max Mustermann", "John Doe", null, null] }
+    { 
+        day: "Monday", 
+        time: "08:00", 
+        therapists: [
+            { patientId: "patient1", therapistName: "Therapeut 1" },
+            null, 
+            null, 
+            null
+        ]
+    },
+    { 
+        day: "Monday", 
+        time: "09:00", 
+        therapists: [
+            null, 
+            { patientId: "patient2", therapistName: "Therapeut 2" },
+            null, 
+            null
+        ]
+    },
+    { 
+        day: "Monday", 
+        time: "10:00", 
+        therapists: [
+            null, 
+            null, 
+            { patientId: "patient3", therapistName: "Therapeut 3" },
+            null
+        ]
+    },
+    { 
+        day: "Monday", 
+        time: "11:00", 
+        therapists: [
+            null, 
+            null, 
+            null, 
+            { patientId: "patient4", therapistName: "Therapeut 4" }
+        ]
+    },
+    { 
+        day: "Monday", 
+        time: "12:00", 
+        therapists: [
+            { patientId: "patient1", therapistName: "Therapeut 1" },
+            { patientId: "patient2", therapistName: "Therapeut 2" },
+            null, 
+            null
+        ]
+    },
+    { 
+        day: "Tuesday", 
+        time: "08:00", 
+        therapists: [
+            null, 
+            null, 
+            { patientId: "patient3", therapistName: "Therapeut 3" },
+            null
+        ]
+    },
+    { 
+        day: "Tuesday", 
+        time: "09:00", 
+        therapists: [
+            { patientId: "patient4", therapistName: "Therapeut 4" },
+            null, 
+            null, 
+            null
+        ]
+    },
+    { 
+        day: "Tuesday", 
+        time: "10:00", 
+        therapists: [
+            null, 
+            { patientId: "patient2", therapistName: "Therapeut 2" },
+            { patientId: "patient3", therapistName: "Therapeut 3" },
+            null
+        ]
+    },
+    { 
+        day: "Tuesday", 
+        time: "11:00", 
+        therapists: [
+            null, 
+            null, 
+            null, 
+            { patientId: "patient4", therapistName: "Therapeut 4" }
+        ]
+    },
+    { 
+        day: "Tuesday", 
+        time: "12:00", 
+        therapists: [
+            { patientId: "patient1", therapistName: "Therapeut 1" },
+            null, 
+            { patientId: "patient3", therapistName: "Therapeut 3" },
+            null
+        ]
+    },
+    { 
+        day: "Wednesday", 
+        time: "08:00", 
+        therapists: [
+            { patientId: "patient2", therapistName: "Therapeut 2" },
+            { patientId: "patient4", therapistName: "Therapeut 4" },
+            null, 
+            null
+        ]
+    },
+    
 ];
 
 export default appointments;

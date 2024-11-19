@@ -105,6 +105,28 @@ $blocked: #fd6d79; // Pastellrot
                             color: #fff;
                         }
                     }
+                    //  {
+                    //     background-color: #534c4d !important;
+                    //     color: #ffffff !important;
+                    //     cursor: not-allowed;
+                    // }
+
+                    &.own {
+                        background-color: #c8e6c9;
+                        color: black;
+                        font-weight: bold;
+                    }
+                    &.blocked,
+                    &.hidden {
+                        background-color: #534c4d !important;
+                        color: #ffffff !important;
+
+                        cursor: not-allowed;
+                        &.admin-view {
+                            background-color: #e3f2fd; /* Hervorhebung für Admins */
+                            color: #333;
+                        }
+                    }
                 }
             }
         }

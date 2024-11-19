@@ -64,10 +64,10 @@ import './navbar.scss';
 import logo from './../../assets/img/logo.webp';
 import { NavLink } from 'react-router-dom';
 import { auth } from './../../firebase-config';
-import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import LoginWindow from '../loginWindow/loginWindow';
 import showOverlay from './../../assets/service/overlay'; // Import des Overlays
-
+import { logout } from "../../assets/service/authService";
 const Navbar = () => {
     const [showLogin, setShowLogin] = useState(false);
     const [user, setUser] = useState(null);
@@ -79,9 +79,15 @@ const Navbar = () => {
         return () => unsubscribe();
     }, []);
 
+    
+
     const handleLogout = async () => {
         try {
-            await signOut(auth);
+            await logout(); // Logout aus dem AuthService
+            setUser(null); // Benutzer zurücksetzen
+            // Füge hier einen Event-Trigger hinzu, um den Zustand zurückzusetzen
+            const logoutEvent = new CustomEvent("userLoggedOut");
+            window.dispatchEvent(logoutEvent); // Event auslösen
             showOverlay("Erfolgreich ausgeloggt!");
         } catch (error) {
             console.error("Fehler beim Logout:", error);
