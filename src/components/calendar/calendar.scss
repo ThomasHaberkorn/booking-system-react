@@ -20,14 +20,14 @@ $blocked: #fd6d79; // Pastellrot
         display: grid;
         grid-template-columns: 1fr repeat(5, 3fr);
         background-color: #007bff;
-        color: #fff;
+        color: $white;
         text-align: center;
         padding: 10px 0;
         border-radius: 4px;
 
         .time-header {
             font-weight: bold;
-            color: #ffffff;
+            color: $white;
         }
 
         .day-header {
@@ -78,7 +78,7 @@ $blocked: #fd6d79; // Pastellrot
 
                         &.booked {
                             background-color: darken($therapist-1, 10%);
-                            color: #fff;
+                            color: $white;
                         }
                     }
                     &:nth-child(2) {
@@ -86,7 +86,7 @@ $blocked: #fd6d79; // Pastellrot
 
                         &.booked {
                             background-color: darken($therapist-2, 10%);
-                            color: #fff;
+                            color: $white;
                         }
                     }
                     &:nth-child(3) {
@@ -94,7 +94,7 @@ $blocked: #fd6d79; // Pastellrot
 
                         &.booked {
                             background-color: darken($therapist-3, 10%);
-                            color: #fff;
+                            color: $white;
                         }
                     }
                     &:nth-child(4) {
@@ -102,24 +102,20 @@ $blocked: #fd6d79; // Pastellrot
 
                         &.booked {
                             background-color: darken($therapist-4, 10%);
-                            color: #fff;
+                            color: $white;
                         }
                     }
-                    //  {
-                    //     background-color: #534c4d !important;
-                    //     color: #ffffff !important;
-                    //     cursor: not-allowed;
-                    // }
 
                     &.own {
                         background-color: #c8e6c9;
                         color: black;
                         font-weight: bold;
+                        border: 2px solid $red;
                     }
                     &.blocked,
                     &.hidden {
                         background-color: #534c4d !important;
-                        color: #ffffff !important;
+                        color: $white !important;
 
                         cursor: not-allowed;
                         &.admin-view {

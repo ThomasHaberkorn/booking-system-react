@@ -1,0 +1,34 @@
+@import "./../../index.scss";
+
+.confirm-modal-overlay {
+    border: 1px solid $dblue;
+    border-radius: 20px;
+    z-index: 1000;
+    width: 300px;
+    padding: 20px;
+    background-color: $white;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    .confirm-modal {
+        @include flexDir(column, $ai: center);
+        text-align: center;
+        font-size: 20px;
+        .modal-actions {
+            @include dFlex();
+            gap: 30px;
+            button {
+                border: none;
+                border-radius: 4px;
+                width: 70px;
+                height: 30px;
+                background-color: $mblue;
+                color: $white;
+                font-weight: 700;
+                cursor: pointer;
+                &:hover {
+                    background-color: $mlblue;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                }
+            }
+        }
+    }
+}
