@@ -20,7 +20,7 @@ const InfoText = ({ onClose }) => {
             <h3>Der Mitarbeiterzugang</h3>
             <p>Es wird auch einen speziellen Zugang für Mitarbeiter geben. Dieser Zugang ermöglicht es, alle Termine und die dazugehörigen Patientendaten einzusehen, wie zum Beispiel E-Mail-Adresse und Name. Die Telefonnummer ist optional.</p>
             <div className="infoBN">
-                <p><strong>Benutzername:</strong> Mitarbeiter</p>
+                <p><strong>Benutzername: </strong>admin@physio.de</p>
                 <p><strong>Passwort:</strong> 123456</p>
             </div>
             <p>Um die hinterlegten Daten zu schützen, können mit dem Mitarbeiterzugang keine Termine oder Patientendaten gelöscht werden.</p>

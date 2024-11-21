@@ -55,7 +55,7 @@ const Home = () => {
                 ref={instructionDiv}
                 style={{
                     position: "fixed",
-                    top: "8vw",
+                    top: "11vh",
                     left: "80%",
                     transform: "translate(-50%, -50%)",
                     opacity: 0,

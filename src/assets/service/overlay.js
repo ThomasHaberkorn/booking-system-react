@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 import "./overlay.scss";
 
 const showOverlay = (message) => {
@@ -16,14 +16,17 @@ const showOverlay = (message) => {
         </div>
     );
 
-    // Overlay anzeigen
+    // Container für das Overlay erstellen
     const overlayElement = document.createElement("div");
     overlayRoot.appendChild(overlayElement);
-    ReactDOM.render(<Overlay />, overlayElement);
+
+    // Root erstellen und rendern
+    const root = createRoot(overlayElement);
+    root.render(<Overlay />);
 
     // Overlay nach 3 Sekunden entfernen
     setTimeout(() => {
-        ReactDOM.unmountComponentAtNode(overlayElement);
+        root.unmount();
         overlayRoot.removeChild(overlayElement);
     }, 3000);
 };
