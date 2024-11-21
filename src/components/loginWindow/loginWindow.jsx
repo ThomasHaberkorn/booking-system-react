@@ -34,14 +34,14 @@ const LoginWindow = ({ onClose }) => {
         // Firebase-Logik ausführen
         try {
             if (isRegister) {
-                await registerWithEmail(email, password, name); // Name übergeben
-                showOverlay("Registrierung erfolgreich!"); // Zeige Overlay statt Alert
+                await registerWithEmail(email, password, name); 
+                showOverlay("Registrierung erfolgreich!"); 
             } else {
                 await loginWithEmail(email, password);
-                showOverlay("Login erfolgreich!"); // Zeige Overlay statt Alert
+                showOverlay("Login erfolgreich!"); 
             }
-            setErrorMessage(""); // Fehlernachricht zurücksetzen
-            onClose(); // Fenster schließen
+            setErrorMessage(""); 
+            onClose(); 
         } catch (error) {
             console.error("Fehler:", error.message);
             setErrorMessage("Fehler: " + error.message);

@@ -7,10 +7,22 @@ import AboutUs from '../aboutus/aboutus';
 import Services from '../services/services';
 import Calendar from '../calendar/calendar';
 import Contact from '../contact/contact';
+import Patients from '../patients/patients';
 
 // Routen definieren
 const router = createBrowserRouter(
     [
+        {
+            path: '/patients',
+            element: (
+                <>
+                    <Navbar />
+                    <div className="mainContent">
+                        <Patients />
+                    </div>
+                </>
+            ),
+        },
         {
             path: '/',
             element: (

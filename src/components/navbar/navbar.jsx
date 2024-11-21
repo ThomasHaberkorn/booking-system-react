@@ -1,6 +1,3 @@
-
-
-
 import React, { useState, useEffect } from 'react';
 import './navbar.scss';
 import logo from './../../assets/img/logo.webp';
@@ -8,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { auth } from './../../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import LoginWindow from '../loginWindow/loginWindow';
-import showOverlay from './../../assets/service/overlay'; // Import des Overlays
+import showOverlay from './../../assets/service/overlay'; 
 import { logout } from "../../assets/service/authService";
 
 const Navbar = () => {
@@ -25,8 +22,8 @@ const Navbar = () => {
 
     const handleLogout = async () => {
         try {
-            await logout(); // Logout durchführen
-            setUser(null); // Benutzer zurücksetzen
+            await logout(); 
+            setUser(null); 
     
             // Event für Logout auslösen
             const logoutEvent = new CustomEvent("userLoggedOut");
@@ -53,6 +50,7 @@ const Navbar = () => {
                 <div className="innerContainer">
                     <div className="nameContainer"><img src={logo} alt="PhysioVital Logo" /></div>
                     <div className="navigation">
+                        <NavLink className="navItem" to="/patients">Patients</NavLink>
                         <NavLink className="navItem" to="/">Home</NavLink>
                         <NavLink className="navItem" to="/services">Leistungen</NavLink>
                         <NavLink className="navItem" to="/calendar">Kalender</NavLink>
