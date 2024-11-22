@@ -7,7 +7,7 @@ import AboutUs from '../aboutus/aboutus';
 import Services from '../services/services';
 import Calendar from '../calendar/calendar';
 import Contact from '../contact/contact';
-import Patients from '../patients/patients';
+import Patients from '../patients/patientList';
 
 // Routen definieren
 const router = createBrowserRouter(

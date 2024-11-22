@@ -1,7 +1,7 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle, useCallback } from 'react';
 import './calendar.scss';
 import appointmentsData from './../../assets/data/appointments.jsx';
-import sampleAppointments from './../../assets/data/sampleAppointments.jsx';
+// import sampleAppointments from './../../assets/data/sampleAppointments.jsx';
 import patientsData from './../../assets/data/patients.jsx';
 import { collection, getDocs, addDoc, doc, deleteDoc, getDoc } from "firebase/firestore";
 import { db, auth } from './../../firebase-config';
@@ -10,7 +10,7 @@ import ConfirmModal from './../../assets/service/ConfirmModal.jsx';
 import LoginWindow from '../loginWindow/loginWindow';
 
 const Calendar = forwardRef((props, ref) => {
-    const [appointments] = useState([...appointmentsData, ...sampleAppointments]);
+    const [appointments] = useState([...appointmentsData]);
     const [firebaseAppointments, setFirebaseAppointments] = useState([]);
     const [patients, setPatients] = useState([...patientsData]);
     const [userRole, setUserRole] = useState("guest");
