@@ -1,51 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { collection, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { db, auth } from "../../firebase-config.js";
 import patientsData from "../../assets/data/patients.jsx";
 import "./patientList.scss";
+import { useNavigate } from "react-router-dom";
 
 const PatientList = () => {
     const [patients] = useState([...patientsData]);
     const [firebasePatients, setFirebasePatients] = useState([]);
-    const [userId, setUserId] = useState(null);
-    const [userRole, setUserRole] = useState(null); // Rolle initial auf null setzen
     const [editingIndex, setEditingIndex] = useState(null);
     const [editedPatient, setEditedPatient] = useState(null);
+    const navigate = useNavigate();
 
+    // Authentifizierung überprüfen
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
-            if (user) {
-                setUserId(user.uid);
-
-                try {
-                    const userDoc = await getDoc(doc(db, "users", user.uid));
-                    if (userDoc.exists()) {
-                        const userData = userDoc.data();
-                        setUserRole(userData?.status || "guest");
-                    } else {
-                        setUserRole("guest");
-                    }
-                } catch (error) {
-                    console.error("Fehler beim Laden der Benutzerrolle:", error);
-                    setUserRole("guest");
-                }
-            } else {
-                setUserRole("guest");
+            if (!user) {
+                navigate("/"); 
             }
         });
         return () => unsubscribe();
-    }, []);
+    }, [navigate]);
 
     // Firebase-Patienten laden
     useEffect(() => {
         const fetchFirebasePatients = async () => {
-            if (!userId) return;
-
             try {
-                const querySnapshot = await getDocs(collection(db, `users/${userId}/patients`));
+                const querySnapshot = await getDocs(collection(db, "users"));
                 const fetchedPatients = querySnapshot.docs.map((doc) => ({
                     id: doc.id,
-                    ...doc.data(),
+                    name: doc.data().name || "Unbekannt",
+                    email: doc.data().email || "Keine Email",
+                    phone: doc.data().phone || "Keine Nummer",
                 }));
                 setFirebasePatients(fetchedPatients);
             } catch (error) {
@@ -54,23 +40,16 @@ const PatientList = () => {
         };
 
         fetchFirebasePatients();
-    }, [userId]);
+    }, []);
 
-    // Lokale und Firebase-Daten kombinieren
-    const combinedPatients = patients.map((localPatient) => {
-        const firebasePatient = firebasePatients.find((p) => p.id === localPatient.id);
-        return firebasePatient || localPatient;
-    });
-
-    // Wenn die Rolle noch nicht gesetzt ist, lade die Seite nicht
-    if (userRole === null) {
-        return <div>Laden...</div>;
-    }
-
-    // Wenn der Benutzer nicht admin ist, verweigere den Zugriff
-    if (userRole !== "admin") {
-        return <div>Sie haben keine Berechtigung, diese Seite zu sehen.</div>;
-    }
+    // Patienten kombinieren und sortieren
+    const combinedPatients = [...firebasePatients, ...patients]
+        .reduce((acc, current) => {
+            const exists = acc.find((p) => p.id === current.id);
+            if (!exists) acc.push(current);
+            return acc;
+        }, [])
+        .sort((a, b) => a.name.localeCompare(b.name));
 
     // Bearbeitung starten
     const startEditing = (index) => {
@@ -80,16 +59,17 @@ const PatientList = () => {
 
     // Bearbeitung speichern
     const saveEditing = async () => {
-        if (!editedPatient || !userId) return;
+        if (!editedPatient) return;
 
         try {
-            const docRef = doc(db, `users/${userId}/patients`, editedPatient.id);
-            await setDoc(docRef, editedPatient);
-
+            const docRef = doc(db, "users", editedPatient.id);
+            await setDoc(docRef, {
+                ...editedPatient,
+                id: editedPatient.id,
+            });
             setFirebasePatients((prev) =>
                 [...prev.filter((p) => p.id !== editedPatient.id), editedPatient]
             );
-
             setEditingIndex(null);
             setEditedPatient(null);
         } catch (error) {
